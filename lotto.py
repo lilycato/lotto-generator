@@ -2,7 +2,6 @@ import tkinter as tk
 from sys import exit
 import random
 
-running = True
 root = tk.Tk()
 root.title('Lotto number generator')
 root.geometry('800x600')
@@ -29,17 +28,10 @@ def lotto_gen_6(event):
     print(pick)
     my_label['text'] = pick
 
-while running:
-    root.bind("<Return>", lotto_gen_7)
-    root.bind("<BackSpace>", lotto_gen_6)
-    root.bind("<Tab>", exit)
-    x = input('Press "Enter" for 7 numbers. Press "Back" for 6 numbers. "Tab" to quit \n')
-    if x == "1":
-        lotto_gen_7()
-    elif x == "2":
-        lotto_gen_6()
-    else:
-        running == False
-        exit()
+root.bind("<Return>", lotto_gen_7)
+root.bind("<BackSpace>", lotto_gen_6)
+root.bind("<Tab>", exit)
+root.mainloop()
+
 
         
