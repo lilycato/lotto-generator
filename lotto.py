@@ -7,7 +7,7 @@ root.title('Lotto number generator')
 root.geometry('800x600')
 
 my_label = tk.Label(text = 'Press buttons to generate. Press "Tab" to quit \n', font=('Arial', 15))
-my_label.place(relx=0.5, rely=0.5, anchor='center')
+my_label.place(relx=0.5, rely=0.4, anchor='center')
 
    
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
