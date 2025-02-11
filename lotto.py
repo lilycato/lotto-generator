@@ -6,8 +6,8 @@ root = tk.Tk()
 root.title('Lotto number generator')
 root.geometry('800x600')
 
-my_label = tk.Label(text = 'Press buttons to generate. Press "Tab" to quit \n', font=('Arial', 15))
-my_label.place(relx=0.5, rely=0.2, anchor='center')
+my_label = tk.Label(text = 'Press "Tab" to quit \n', font=('Arial', 15))
+my_label.place(relx=0.3, rely=0.4, anchor='center')
 
    
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
@@ -16,7 +16,7 @@ numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
            42, 43, 44, 45, 46, 47, 48, 49]
     
 list_box = tk.Listbox(font=('Arial', 15))
-list_box.place(relx=0.5, rely=0.7, anchor='center', height=300)
+list_box.place(relx=0.6, rely=0.5, anchor='center', height=300)
 
 def lotto_gen_7():
     pick = random.sample(numbers, 7)
@@ -31,10 +31,10 @@ def lotto_gen_6():
     list_box.insert(tk.END, pick)
 
 button_7 = tk.Button(root, text="Generate 7 numbers", command = lotto_gen_7)
-button_7.place(relx=0.5, rely=0.3, anchor='center')
+button_7.place(relx=0.3, rely=0.5, anchor='center')
 
 button_6 = tk.Button(root, text="Generate 6 numbers", command = lotto_gen_6)
-button_6.place(relx=0.5, rely=0.4, anchor='center')
+button_6.place(relx=0.3, rely=0.6, anchor='center')
 
 
 root.bind("<Tab>", exit)
