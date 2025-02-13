@@ -66,6 +66,25 @@ save_button.place(relx=0.3, rely=0.7, anchor='center')
 status_label = tk.Label(root, text="", padx=20, pady=10)
 status_label.pack()
 
+num_digits=tk.StringVar()
+num_entry=tk.Entry(root, textvariable = num_digits, font = ('Arial',10,'normal'))
+num_entry.place(relx=0.3, rely=0.8, anchor='center')
+
+digits = 0
+
+def lotto_gen(x):
+    pick = random.sample(numbers, x)
+    pick.sort()
+    print(pick)
+    list_box.insert(tk.END, pick)
+
+def submit():
+    digits=num_entry.get()
+    digits=int(digits)
+    lotto_gen(digits)
+
+sub_btn=tk.Button(root,text = 'Custom number of digits', command=submit)
+sub_btn.place(relx=0.3, rely=0.85, anchor='center')
 
 root.bind("<Tab>", exit)
 root.mainloop()
