@@ -65,7 +65,9 @@ def save_to_file():
             status_label.config(text=f"File saved: {file_path}")
         except Exception as e:
             status_label.config(text=f"Error saving file: {str(e)}")
-
+            
+def clear_list_box():
+   list_box.delete(0,"end")
 
 button_7 = tk.Button(root, text="Generate 7 numbers", command = lotto_gen_7)
 button_7.place(relx=0.3, rely=0.5, anchor='center')
@@ -85,6 +87,9 @@ num_entry.place(relx=0.3, rely=0.8, anchor='center')
 
 sub_btn=tk.Button(root,text = 'Custom number of digits', command=submit)
 sub_btn.place(relx=0.3, rely=0.85, anchor='center')
+
+list_clear=tk.Button(root, text = 'Clear all numbers', command=clear_list_box)
+list_clear.place(relx=0.6, rely=0.8, anchor='center')
 
 root.bind("<Tab>", exit)
 root.mainloop()
