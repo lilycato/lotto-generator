@@ -1,13 +1,23 @@
+import sys
+import os
 import tkinter as tk
 from tkinter import filedialog
-from sys import exit
+from tkinter import PhotoImage
 import random
 
 root = tk.Tk()
 root.title('Lotto number generator')
 root.geometry('800x600')
 
-my_label = tk.Label(text = 'Press "Tab" to quit \n', font=('Arial', 15))
+def restart_program():
+    python = sys.executable
+    os.execl(python, python, * sys.argv)
+
+image = PhotoImage(file='graphics/player/player_stand.png')
+image_label = tk.Button(root, image=image, command=restart_program)
+image_label.place(relx=0.3, rely=0.2, anchor='center')
+
+my_label = tk.Label(text = 'Press icon to restart \n or "Tab" to quit \n', font=('Arial', 15))
 my_label.place(relx=0.3, rely=0.4, anchor='center')
 
    
