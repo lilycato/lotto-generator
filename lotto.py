@@ -5,6 +5,11 @@ from tkinter import filedialog
 from tkinter import PhotoImage
 import random
 
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+           16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
+           29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41,
+           42, 43, 44, 45, 46, 47, 48, 49]
+
 root = tk.Tk()
 root.title('Lotto number generator')
 root.geometry('800x600')
@@ -13,22 +18,16 @@ def restart_program():
     python = sys.executable
     os.execl(python, python, * sys.argv)
 
+list_box = tk.Listbox()
+list_box.place(relx=0.6, rely=0.5, anchor='center', height=300)
+list_box.configure(background='skyblue4', foreground='white', font=('Arial', 15))
+
 image = PhotoImage(file='graphics/player/player_stand.png')
 image_label = tk.Button(root, image=image, command=restart_program)
 image_label.place(relx=0.3, rely=0.2, anchor='center')
 
 my_label = tk.Label(text = 'Press icon to restart \n or "Tab" to quit \n', font=('Arial', 15))
-my_label.place(relx=0.3, rely=0.4, anchor='center')
-
-   
-numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
-           16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
-           29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41,
-           42, 43, 44, 45, 46, 47, 48, 49]
-    
-list_box = tk.Listbox()
-list_box.place(relx=0.6, rely=0.5, anchor='center', height=300)
-list_box.configure(background='skyblue4', foreground='white', font=('Arial', 15))
+my_label.place(relx=0.3, rely=0.4, anchor='center')    
 
 def lotto_gen_7():
     pick = random.sample(numbers, 7)
@@ -41,6 +40,20 @@ def lotto_gen_6():
     pick.sort()
     print(pick)
     list_box.insert(tk.END, pick)
+    
+def lotto_gen(x):
+    pick = random.sample(numbers, x)
+    pick.sort()
+    print(pick)
+    list_box.insert(tk.END, pick)
+    
+def submit():
+    digits=num_entry.get()
+    try:
+        digits=int(digits)
+    except:
+         my_label['text'] = 'Error.Please enter a number'
+    lotto_gen(digits)
     
 def save_to_file():
     file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
@@ -71,17 +84,6 @@ num_entry=tk.Entry(root, textvariable = num_digits, font = ('Arial',10,'normal')
 num_entry.place(relx=0.3, rely=0.8, anchor='center')
 
 digits = 0
-
-def lotto_gen(x):
-    pick = random.sample(numbers, x)
-    pick.sort()
-    print(pick)
-    list_box.insert(tk.END, pick)
-
-def submit():
-    digits=num_entry.get()
-    digits=int(digits)
-    lotto_gen(digits)
 
 sub_btn=tk.Button(root,text = 'Custom number of digits', command=submit)
 sub_btn.place(relx=0.3, rely=0.85, anchor='center')
