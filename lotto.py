@@ -27,25 +27,34 @@ image_label = tk.Button(root, image=image, command=restart_program)
 image_label.place(relx=0.3, rely=0.2, anchor='center')
 
 my_label = tk.Label(text = 'Press icon to restart \n or "Tab" to quit \n', font=('Arial', 15))
-my_label.place(relx=0.3, rely=0.4, anchor='center')    
+my_label.place(relx=0.3, rely=0.4, anchor='center') 
+
+num_time_gen=tk.Scale(root, from_=1, to=10, orient='horizontal')  
+num_time_gen.place(relx=0.6, rely=0.2, anchor='center') 
+
+num_time_gen_label = tk.Label(text = 'How many times to generate?', font=('Arial', 10))
+num_time_gen_label.place(relx=0.6, rely=0.15, anchor='center') 
 
 def lotto_gen_7():
-    pick = random.sample(numbers, 7)
-    pick.sort()
-    print(pick)
-    list_box.insert(tk.END, pick)
+    for i in range(0,num_time_gen.get()):
+        pick = random.sample(numbers, 7)
+        pick.sort()
+        print(pick)
+        list_box.insert(tk.END, pick)
 
 def lotto_gen_6():
-    pick = random.sample(numbers, 6)
-    pick.sort()
-    print(pick)
-    list_box.insert(tk.END, pick)
+    for i in range(0,num_time_gen.get()):
+        pick = random.sample(numbers, 6)
+        pick.sort()
+        print(pick)
+        list_box.insert(tk.END, pick)
     
 def lotto_gen(x):
-    pick = random.sample(numbers, x)
-    pick.sort()
-    print(pick)
-    list_box.insert(tk.END, pick)
+    for i in range(0,num_time_gen.get()):
+        pick = random.sample(numbers, x)
+        pick.sort()
+        print(pick)
+        list_box.insert(tk.END, pick)
     
 def submit():
     digits=num_entry.get()
@@ -83,7 +92,6 @@ status_label.pack()
 
 num_entry=tk.Entry(root, font = ('Arial',10,'normal'))
 num_entry.place(relx=0.3, rely=0.8, anchor='center')
-
 
 sub_btn=tk.Button(root,text = 'Custom number of digits', command=submit)
 sub_btn.place(relx=0.3, rely=0.85, anchor='center')
