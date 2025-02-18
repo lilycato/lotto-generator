@@ -3,6 +3,7 @@ import os
 import tkinter as tk
 from tkinter import filedialog
 from tkinter import PhotoImage
+from tkinter import messagebox
 import random
 
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
@@ -61,7 +62,7 @@ def submit():
     try:
         digits=int(digits)
     except:
-         my_label['text'] = 'Error.Please enter a number'
+         messagebox.showerror('Invalid Input', 'Please enter numbers only')
     lotto_gen(digits)
     
 def save_to_file():
