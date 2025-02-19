@@ -5,6 +5,7 @@ from tkinter import filedialog
 from tkinter import PhotoImage
 from tkinter import messagebox
 import random
+import json
 
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
            16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
@@ -66,15 +67,15 @@ def submit():
     lotto_gen(digits)
     
 def save_to_file():
-    file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
+    file_path = filedialog.asksaveasfilename(defaultextension=json, filetypes=[("JSON files", "*.json"), ("All files", "*.*")])
     if file_path:
         try:
             with open(file_path, 'w') as file:
-                list_box_str = str(list_box.get(0, "end"))
-                file.write(list_box_str)
-            status_label.config(text=f"File saved: {file_path}")
+                list_box_str = list_box.get(0, "end")
+                file.write(json.dumps(list_box_str, indent=4))
+            messagebox.showinfo('File Saved to:', file_path)
         except Exception as e:
-            status_label.config(text=f"Error saving file: {str(e)}")
+            messagebox.showerror('Error', 'An error has occured while saving.')
             
 def clear_list_box():
    list_box.delete(0,"end")
@@ -85,7 +86,7 @@ button_7.place(relx=0.3, rely=0.5, anchor='center')
 button_6 = tk.Button(root, text="Generate 6 numbers", command = lotto_gen_6)
 button_6.place(relx=0.3, rely=0.6, anchor='center')
 
-save_button = tk.Button(root, text="Save to file", command = save_to_file)
+save_button = tk.Button(root, text="Save to JSON", command = save_to_file)
 save_button.place(relx=0.3, rely=0.7, anchor='center')
 
 status_label = tk.Label(root, text="", padx=20, pady=10)
